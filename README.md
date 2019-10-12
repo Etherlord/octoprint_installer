@@ -14,12 +14,39 @@ Octoprint installer for Armbian systems
 
 Download && run
 ```shell
+su
 wget https://raw.githubusercontent.com/Nebari-xx/octoprint_installer/master/octoprint_install.sh
 chmod +x octoprint_install.sh
 ./octoprint_install.sh
 ```
 
-After run the script enter password for octoprint system user and wait
-after finishing the script, enter `reboot`.
+Script enter password for octoprint system user and wait.
+Open http://<SERVER_IP>:5000 after script finish work
 
 Enjoy!
+
+# Useful commands
+
+## Show octoprint logs
+
+```shell
+journalctl --no-pager -b -u octoprint
+```
+
+## Show webcam logs
+
+```shell
+journalctl --no-pager -b -u octoprint
+```
+
+## Restart octoprint
+
+```shell
+systemctl restart octoprint
+```
+
+### Restart webcam
+
+```shell
+systemctl restart webcam.service
+```
