@@ -5,12 +5,12 @@ usermod -a -G dialout octo
 passwd octo
 cd /home/octo
 apt-get update
-apt-get -y install python-pip python-dev python-setuptools python-virtualenv git libyaml-dev build-essential
+apt-get -y install python-pip python-dev python-setuptools python-virtualenv git libyaml-dev build-essential virtualenv
 su octo -c whoami
 su octo -c 'mkdir OctoPrint'
 cd OctoPrint
 pwd
-su octo -c 'virtualenv --quiet venv && /bin/bash -c "source venv/bin/activate && pip install pip --upgrade && pip install octoprint"'
+su octo -c 'virtualenv -p /usr/bin/python2.7 --quiet venv && /bin/bash -c "source venv/bin/activate && pip install pip --upgrade && pip install octoprint"'
 wget https://github.com/foosel/OctoPrint/raw/master/scripts/octoprint.init && mv octoprint.init /etc/init.d/octoprint
 wget https://raw.githubusercontent.com/Nebari-xx/octoprint_installer/master/octoprint.default && mv octoprint.default /etc/default/octoprint
 chmod +x /etc/init.d/octoprint
