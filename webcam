@@ -1,0 +1,17 @@
+#!/bin/bash
+# Start / stop streamer daemon
+
+case "$1" in
+    start)
+        /home/octo/scripts/webcamDaemon >/dev/null 2>&1 &
+        echo "$0: started"
+        ;;
+    stop)
+        pkill -x webcamDaemon
+        pkill -x mjpg_streamer
+        echo "$0: stopped"
+        ;;
+    *)
+        echo "Usage: $0 {start|stop}" >&2
+        ;;
+esac
