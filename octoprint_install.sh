@@ -31,5 +31,6 @@ wget https://raw.githubusercontent.com/Nebari-xx/octoprint_installer/master/webc
 chmod +x webcam
 chmod +x webcamDaemon
 wget https://raw.githubusercontent.com/Nebari-xx/octoprint_installer/master/rc.local && mv rc.local /etc/rc.local
+chmod +x /etc/rc.local
 wget https://raw.githubusercontent.com/Nebari-xx/octoprint_installer/master/rc-local.service && mv rc-local.service /etc/systemd/system/rc-local.service
 systemctl enable rc-local.service
