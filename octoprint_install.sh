@@ -36,10 +36,10 @@ function setup_venv {
 
 export -f setup_venv
 
-echo_yellow "# Create octa user"
+echo_yellow "# Create octo user"
 useradd -m -s /bin/bash -G tty,dialout,video octo
 
-echo_yellow "# Please password for octa user"
+echo_yellow "# Please password for octo user"
 passwd octo
 
 echo_yellow "# Install package dependencies"
@@ -84,7 +84,7 @@ make
 cp -v /home/octo/mjpg-streamer/mjpg-streamer-experimental/_build/mjpg_streamer /usr/local/bin/mjpg_streamer
 
 echo_yellow "# Configure scripts"
-echo "octo ALL=NOPASSWD: /sbin/shutdown" >> /etc/sudoers
+echo "octo ALL=NOPASSWD: /sbin/shutdown,/usr/bin/systemctl restart octoprint.service" >> /etc/sudoers
 curl -fsvL \
   -o /etc/systemd/system/webcam.service \
   https://raw.githubusercontent.com/Nebari-xx/octoprint_installer/master/webcam.service
