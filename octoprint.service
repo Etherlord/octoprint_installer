@@ -1,0 +1,18 @@
+[Unit]
+Description=The snappy web interface for your 3D printer
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=octo
+UMask=022
+Nice=-2
+PIDFile=/var/run/octoprint.pid
+EnvironmentFile=/etc/default/octoprint
+Restart=always
+RestartSec=5
+ExecStart=/home/octo/OctoPrint/venv/bin/octoprint --basedir ${BASEDIR} --port=${PORT} --config=${CONFIGFILE}
+
+[Install]
+WantedBy=multi-user.target

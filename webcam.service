@@ -1,0 +1,14 @@
+[Unit]
+Description=Webcam daemon
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=octo
+Restart=on-failure
+RestartSec=60
+ExecStart=/usr/local/bin/webcamDaemon
+
+[Install]
+WantedBy=multi-user.target

@@ -44,12 +44,8 @@ echo usb options: $camera_usb_options
 echo raspi options: $camera_raspi_options
 
 # keep mjpg streamer running if some camera is attached
-while true; do
-    if [ -e "/dev/video0" ] && { [ "$camera" = "auto" ] || [ "$camera" = "usb" ] ; }; then
-        startUsb
-    elif [ "`vcgencmd get_camera`" = "supported=1 detected=1" ] && { [ "$camera" = "auto" ] || [ "$camera" = "raspi" ] ; }; then
-        startRaspi
-    fi
-
-    sleep 120
-done
+if [ -e "/dev/video0" ] && { [ "$camera" = "auto" ] || [ "$camera" = "usb" ] ; }; then
+    startUsb
+elif [ "`vcgencmd get_camera`" = "supported=1 detected=1" ] && { [ "$camera" = "auto" ] || [ "$camera" = "raspi" ] ; }; then
+    startRaspi
+fi
