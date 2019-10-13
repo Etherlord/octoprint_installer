@@ -84,7 +84,7 @@ make
 cp -v /home/octo/mjpg-streamer/mjpg-streamer-experimental/_build/mjpg_streamer /usr/local/bin/mjpg_streamer
 
 echo_yellow "# Configure scripts"
-echo "octo ALL=NOPASSWD: /sbin/shutdown,/usr/bin/systemctl restart octoprint.service" >> /etc/sudoers
+echo "octo ALL=NOPASSWD: /sbin/shutdown,/bin/systemctl restart octoprint.service" >> /etc/sudoers
 curl -fsvL \
   -o /etc/systemd/system/webcam.service \
   https://raw.githubusercontent.com/Nebari-xx/octoprint_installer/master/webcam.service
