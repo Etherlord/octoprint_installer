@@ -112,4 +112,5 @@ done
 echo_green "# All done! Try to open web interface with this link:"
 for IP in $(hostname --all-ip-addresses | grep -v '127.0.0.1'); do
   echo_green "# Listen http://${IP}:5000"
+  echo_green "# Webcam stream http://${IP}:8080/?action=stream"
 done
