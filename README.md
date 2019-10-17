@@ -1,5 +1,5 @@
 # About
-Octoprint installer for Armbian systems
+Octoprint installer for Armbian systems based on Debian Buster
 
 # How-to install
 
