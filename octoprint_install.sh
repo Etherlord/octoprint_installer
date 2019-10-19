@@ -3,11 +3,7 @@
 set -e
 
 export HOMEDIR="/home/octo"
-
-if [ "$EUID" -ne 0 ]; then
-  echo "# Please run as root"
-  exit 1
-fi
+export DISTRIBUTOR="$(lsb_release -is)"
 
 function echo_yellow {
   TEXT="${@}"
@@ -23,6 +19,21 @@ function echo_red {
   TEXT="${@}"
   echo -e "\e[31m${TEXT}\e[0m"
 }
+
+if [ "$EUID" -ne 0 ]; then
+  echo_red "# Please run as root"
+  exit 1
+fi
+
+case $DISTRIBUTOR in
+  Debian|Ubuntu)
+    echo_green "# Detected distributior: ${DISTRIBUTOR}"
+    ;;
+  *)
+    echo_red "# Unsupported distributor: ${DISTRIBUTOR}"
+    exit 2
+    ;;
+esac
 
 function setup_venv {
   set -e
@@ -45,25 +56,43 @@ passwd octo
 echo_yellow "# Install package dependencies"
 apt-get update
 # Python dependencies
-apt-get -y install \
-  build-essential \
-  curl \
-  git \
-  libyaml-dev \
-  python-dev \
-  python-pip \
-  python-setuptools \
-  python-virtualenv \
-  virtualenv
+case $DISTRIBUTOR in
+  Ubuntu|Debian)
+    apt-get -y install \
+      build-essential \
+      curl \
+      git \
+      libyaml-dev \
+      python-dev \
+      python-pip \
+      python-setuptools \
+      python-virtualenv \
+      virtualenv
+    ;;
+esac
 # ffmpeg && mjpg-streamer build dependencies
-apt-get -y install \
-  cmake \
-  ffmpeg \
-  git \
-  imagemagick \
-  libjpeg62-turbo-dev \
-  libv4l-dev \
-  sudo
+case $DISTRIBUTOR in
+  Debian)
+    apt-get -y install \
+      cmake \
+      ffmpeg \
+      git \
+      imagemagick \
+      libjpeg62-turbo-dev \
+      libv4l-dev \
+      sudo
+    ;;
+  Ubuntu)
+    apt-get -y install \
+      cmake \
+      ffmpeg \
+      git \
+      imagemagick \
+      libjpeg8-dev \
+      libv4l-dev \
+      sudo
+    ;;
+esac
 
 echo_yellow "# Configure OctoPrint VirtualEnv"
 su octo -c "setup_venv"
