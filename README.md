@@ -1,5 +1,8 @@
 # About
-Octoprint installer for Armbian systems based on Debian Buster
+
+Octoprint installer for:
+* Armbian systems based on Debian Buster
+* Ubuntu based (tested on 18.04)
 
 # How-to install
 
