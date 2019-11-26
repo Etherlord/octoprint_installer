@@ -17,7 +17,7 @@ Octoprint installer for:
 
 Download && run
 ```shell
-su
+su -
 wget https://raw.githubusercontent.com/Nebari-xx/octoprint_installer/master/octoprint_install.sh
 chmod +x octoprint_install.sh
 ./octoprint_install.sh
