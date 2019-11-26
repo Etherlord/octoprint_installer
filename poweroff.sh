@@ -1,3 +1,3 @@
 #!/bin/sh
-gpio mode 40 out
-gpio write 40 0
+gpio -1 mode 40 out
+gpio -1 write 40 0
