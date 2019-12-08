@@ -47,6 +47,19 @@ function setup_venv {
 
 export -f setup_venv
 
+if [ -d "${HOMEDIR}" ]; then
+    read -p "User octo already exist, delete user and continue? (Y/n)" -n 1 -r
+    echo    # (optional) move to a new line
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+        echo_yellow "# Delete user octo and $HOMEDIR folder"
+        userdel -r octo
+    else
+        echo_red "User octo already exist. Installation stoped"
+        exit
+    fi
+fi
+
 echo_yellow "# Create octo user"
 useradd -m -s /bin/bash -G tty,dialout,video octo
 
