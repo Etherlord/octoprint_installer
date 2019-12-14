@@ -45,7 +45,7 @@ journalctl --no-pager -b -u octoprint
 ## Restart octoprint
 
 ```shell
-systemctl restart octoprint
+sudo systemctl restart octoprint.service
 ```
 
 ### Restart webcam
