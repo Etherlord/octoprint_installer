@@ -80,6 +80,7 @@ case $DISTRIBUTOR in
       python-pip \
       python-setuptools \
       python-virtualenv \
+      zlib1g-dev \
       virtualenv
     ;;
 esac
