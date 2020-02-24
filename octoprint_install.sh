@@ -3,7 +3,7 @@
 set -e
 
 export HOMEDIR="/home/octo"
-export DISTRIBUTOR="$(lsb_release -is)"
+export DISTRIBUTOR="$(/usr/bin/lsb_release -is)"
 
 function echo_yellow {
   TEXT="${@}"
