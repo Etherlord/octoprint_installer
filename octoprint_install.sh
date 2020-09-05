@@ -39,7 +39,7 @@ function setup_venv {
   set -e
   mkdir ${HOMEDIR}/OctoPrint
   cd ${HOMEDIR}/OctoPrint
-  virtualenv -p /usr/bin/python2.7 --quiet venv
+  virtualenv -p /usr/bin/python3 --quiet venv
   source venv/bin/activate
   pip install pip --upgrade
   pip install octoprint
@@ -76,10 +76,10 @@ case $DISTRIBUTOR in
       curl \
       git \
       libyaml-dev \
-      python-dev \
-      python-pip \
-      python-setuptools \
-      python-virtualenv \
+      python3-dev \
+      python3-pip \
+      python3-setuptools \
+      python3-virtualenv \
       zlib1g-dev \
       virtualenv
     ;;
