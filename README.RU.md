@@ -18,7 +18,7 @@
 Вводим команды поочередно. Каждая строка - отдельная команда
 ```shell
 su -
-wget https://raw.githubusercontent.com/Nebari-xx/octoprint_installer/master/octoprint_install.sh
+wget https://raw.githubusercontent.com/Etherlord/octoprint_installer/master/octoprint_install.sh
 chmod +x octoprint_install.sh
 ./octoprint_install.sh
 ```
