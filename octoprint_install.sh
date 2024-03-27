@@ -76,6 +76,7 @@ case $DISTRIBUTOR in
       curl \
       git \
       libyaml-dev \
+      libffi-dev \
       python3-dev \
       python3-pip \
       python3-setuptools \
